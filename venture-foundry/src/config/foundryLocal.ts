@@ -12,7 +12,7 @@ export const LOCAL_TOOLS: LocalTool[] = [
   { key: 'ollama', name: 'Ollama', endpoint: 'http://127.0.0.1:11434', kind: 'model', enabledByDefault: true, capabilities: ['chat','classification','extraction','embeddings'] },
   { key: 'omniroute', name: 'OmniRoute', repo: 'thetondj-gif/OmniRoute', endpoint: 'http://127.0.0.1:8008', kind: 'model', enabledByDefault: false, capabilities: ['provider-routing','fallbacks','free-model-routing'] },
   { key: 'hermes', name: 'Hermes Agent', repo: 'thetondj-gif/hermes-agent', kind: 'agent', enabledByDefault: false, capabilities: ['local-agent','tool-use','session-runtime'] },
-  { key: 'dawn-skills', name: 'DAWN Skill Stack', repo: 'thetondj-gif/dawn-skills', kind: 'agent', enabledByDefault: false, capabilities: ['40-governed-skills','council','tool-policy','evidence','routing'] },
+  { key: 'skill-pack', name: 'Reusable Skill Pack', repo: 'thetondj-gif/dawn-skills', kind: 'agent', enabledByDefault: false, capabilities: ['specialist-skills','product','research','content','sales','automation'] },
   { key: 'agency-agents', name: 'Agency Agents', repo: 'thetondj-gif/agency-agents', kind: 'agent', enabledByDefault: false, capabilities: ['specialist-agents','department-agents'] },
   { key: 'skills', name: 'Skills Registry', repo: 'thetondj-gif/skills', kind: 'agent', enabledByDefault: false, capabilities: ['reusable-skills'] },
   { key: 'n8n', name: 'n8n', repo: 'thetondj-gif/n8n', endpoint: 'http://127.0.0.1:5678', kind: 'execution', enabledByDefault: false, capabilities: ['workflows','webhooks','integrations','schedules'] },
@@ -29,18 +29,16 @@ export const LOCAL_TOOLS: LocalTool[] = [
 ];
 
 export const LOCAL_AGENTS = [
-  { id: 'founder-office', name: 'Founder Office', role: 'Portfolio prioritisation and escalation', preferredModel: 'ollama', skills: ['mission-routing','evidence','portfolio-analysis'], tools: ['local-files','github-read','world-intel-mcp'], approvals: ['external-write','spend','deployment'] },
-  { id: 'product-director', name: 'Product Director', role: 'Turn ideas into specs, tests and builder prompts', preferredModel: 'ollama', skills: ['product-foundry','requirements','acceptance'], tools: ['open-codesign','local-files','github-read'], approvals: ['production-deploy'] },
-  { id: 'local-builder', name: 'Local Builder', role: 'Implement and repair products locally', preferredModel: 'ollama', skills: ['coding','testing','integration'], tools: ['open-codesign','shell','git'], approvals: ['main-branch-write','public-deploy'] },
-  { id: 'research-director', name: 'Research Director', role: 'Evidence and commercial intelligence', preferredModel: 'ollama', skills: ['research','provenance','signal-ranking'], tools: ['firecrawl','world-intel-mcp','local-files'], approvals: ['paid-data'] },
-  { id: 'growth-director', name: 'Growth Director', role: 'GTM, acquisition experiments and content', preferredModel: 'ollama', skills: ['growth','content','sales'], tools: ['postiz','comfyui','voicebox'], approvals: ['publish','ad-spend'] },
-  { id: 'knowledge-librarian', name: 'Knowledge Librarian', role: 'Ingest, relate and retrieve knowledge', preferredModel: 'ollama', skills: ['knowledge','memory','provenance'], tools: ['qdrant','graphiti','local-files'], approvals: ['canonical-delete'] },
-  { id: 'operations-director', name: 'Operations Director', role: 'Jobs, workflows and health checks', preferredModel: 'ollama', skills: ['tool-policy','observability','recovery'], tools: ['n8n','shell','docker'], approvals: ['external-write','service-exposure'] },
-  { id: 'qa-governor', name: 'QA Governor', role: 'Independent acceptance and evidence review', preferredModel: 'ollama', skills: ['qa','evidence','acceptance'], tools: ['tests','git-diff','health-checks'], approvals: [] }
+  { id: 'product-architect', name: 'Product Architect', role: 'Turn raw ideas into buildable product specs and builder prompts', preferredModel: 'ollama', skills: ['product-design','requirements','stack-selection'], tools: ['open-codesign','local-files','github-read'] },
+  { id: 'rapid-builder', name: 'Rapid Builder', role: 'Generate and iterate working applications quickly', preferredModel: 'ollama', skills: ['coding','prototyping','integration'], tools: ['open-codesign','shell','git'] },
+  { id: 'backend-engineer', name: 'Backend Engineer', role: 'Build APIs, persistence, jobs and integrations', preferredModel: 'ollama', skills: ['api-design','database','testing'], tools: ['shell','git','n8n'] },
+  { id: 'researcher', name: 'Researcher', role: 'Gather product, market and technical context', preferredModel: 'ollama', skills: ['research','competitive-analysis','data-gathering'], tools: ['firecrawl','world-intel-mcp','local-files'] },
+  { id: 'growth-strategist', name: 'Growth Strategist', role: 'Create positioning, launch tests, content and acquisition ideas', preferredModel: 'ollama', skills: ['growth','content','sales'], tools: ['postiz','comfyui','voicebox'] },
+  { id: 'knowledge-engineer', name: 'Knowledge Engineer', role: 'Ingest, relate and retrieve project knowledge', preferredModel: 'ollama', skills: ['knowledge','retrieval','entity-linking'], tools: ['qdrant','graphiti','local-files'] },
+  { id: 'automation-engineer', name: 'Automation Engineer', role: 'Create workflows, local jobs and integrations', preferredModel: 'ollama', skills: ['automation','scripting','integration'], tools: ['n8n','shell','docker'] },
+  { id: 'qa-test-engineer', name: 'QA / Test Engineer', role: 'Run acceptance, regression and smoke tests on generated apps', preferredModel: 'ollama', skills: ['qa','testing','debugging'], tools: ['tests','git-diff','health-checks'] }
 ];
 
-export const DAWN_SKILL_EXTERNAL_DIRS = [
-  '/Users/alinton/dawn-skills/skills',
-  '/Users/alinton/dawn-skills/council',
-  '/Users/alinton/dawn-skills/system'
+export const REUSABLE_SKILL_DIRS = [
+  '/Users/alinton/dawn-skills/skills'
 ];
