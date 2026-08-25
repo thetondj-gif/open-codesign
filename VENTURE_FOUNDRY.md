@@ -1,11 +1,13 @@
 # Venture Foundry
 
-Local-first product creation and venture orchestration layer.
+Independent local-first app generation and venture prototyping tool.
 
-Core loop: IDEA → SPEC → BUILD → TEST → DEPLOY → VALIDATE → SCALE/KILL.
+Core loop: IDEA → SPEC → GENERATE → BUILD → TEST → EXPORT/DEPLOY → ITERATE.
 
-This branch contains the Venture Foundry local-first retrofit overlay for the Design Arena export. DAWN is deliberately optional: the Foundry must continue operating if DAWN is unavailable.
+Venture Foundry is not part of DAWN and does not inherit DAWN governance, mission gates, council rules, approval chains, evidence gates, tenant controls or runtime constraints.
 
-The branch adds local tool wiring, local department agents, idea-import normalisation, optional Hermes/DAWN adapters, and a concrete integration map for the existing GitHub/local stack.
+Its job is speed: turn ideas into working applications using local/free tools wherever possible, with external builders and cloud services available through replaceable adapters.
+
+Future platforms, including DAWN, may connect later through a generic integration API. They must remain peers, never owners of Foundry state or required dependencies.
 
 See `venture-foundry/docs/LOCAL_FIRST_ARCHITECTURE.md`.
