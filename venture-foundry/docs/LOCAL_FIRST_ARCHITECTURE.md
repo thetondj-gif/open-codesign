@@ -1,19 +1,24 @@
-# Venture Foundry local-first architecture
+# Venture Foundry — independent local-first app generator
 
-Venture Foundry is standalone by default. DAWN is a later peer integration, never a boot dependency.
+Venture Foundry is a standalone application-generation system. It does not depend on DAWN and does not inherit DAWN governance or execution constraints.
+
+## Core objective
+Idea → structured spec → stack selection → builder prompt/code generation → local build → tests → export/deploy → iterate.
+
+The default bias is speed, low cost and replaceable components.
 
 ## Canonical boundaries
-- Product/portfolio state belongs to Venture Foundry persistence.
-- LocalStorage is the zero-setup fallback; PostgreSQL is the preferred durable local target.
-- Ollama/OmniRoute provide local model execution.
-- Hermes/AoE may execute local agent jobs through adapters.
-- DAWN may later exchange missions, evidence and intelligence through an adapter; DAWN does not own Foundry state.
-- Qdrant and Graphiti are derived indexes, not canonical truth.
+- Venture Foundry owns its own projects, specs, builds, templates, experiments and generated artifacts.
+- LocalStorage/SQLite can provide zero-setup persistence; PostgreSQL is the preferred durable local target.
+- Ollama/OmniRoute provide local model execution and optional free-provider routing.
+- Hermes/AoE/local coding agents are optional execution workers, not controllers.
+- Qdrant/Graphiti are optional derived knowledge indexes.
+- Any future external orchestration system connects only through generic APIs/webhooks/MCP and is never a boot dependency.
 
 ## Existing local/open-source repos to wire
 - thetondj-gif/OmniRoute — local/free model routing
 - thetondj-gif/hermes-agent — local agent runtime
-- thetondj-gif/dawn-skills — governed skill source; mount read-only
+- thetondj-gif/dawn-skills/skills — reusable specialist skills only; do not import council/system governance layers
 - thetondj-gif/agency-agents — specialist agent definitions
 - thetondj-gif/skills — reusable capabilities
 - thetondj-gif/n8n — workflow integrations
@@ -23,27 +28,29 @@ Venture Foundry is standalone by default. DAWN is a later peer integration, neve
 - thetondj-gif/voicebox — voice generation
 - thetondj-gif/postiz-app — distribution
 - thetondj-gif/world-intel-mcp — intelligence/MCP
-- thetondj-gif/open-codesign — builder host
+- thetondj-gif/open-codesign — local builder host
 - thetondj-gif/webstudio — optional visual builder
 - thetondj-gif/open-webui — optional local operator UI
 
-## DAWN compatibility
-DAWN Genesis currently states PostgreSQL is canonical DAWN truth, Qdrant is a rebuildable semantic index, Graphiti is optional derived context, Hermes is execution/session memory, and local-first/zero-bloat is a non-negotiable. Foundry mirrors those boundaries without depending on DAWN.
+## Skill reuse rule
+Skills may be harvested from existing repos as reusable capabilities. Their original DAWN governance wrappers, approval matrices, council routing, mission gates and evidence requirements are not inherited by Venture Foundry.
 
-The dawn-skills repo exposes 40 active governed skill directories. Hermes should consume them read-only through:
+Preferred external skill directory:
 
 ```yaml
 skills:
   external_dirs:
     - /Users/alinton/dawn-skills/skills
-    - /Users/alinton/dawn-skills/council
-    - /Users/alinton/dawn-skills/system
 ```
 
-Do not grant local agents write permission to the canonical skill repository.
+The directory can remain read-only simply to protect source files; this is repository hygiene, not runtime governance.
 
 ## Local agents
-Initial departments: Founder Office, Product Director, Local Builder, Research Director, Growth Director, Knowledge Librarian, Operations Director and QA Governor. Each has explicit tools and approval boundaries.
+Initial agents are practical specialists: Product Architect, Rapid Builder, Backend Engineer, Researcher, Growth Strategist, Knowledge Engineer, Automation Engineer and QA/Test Engineer.
 
-## Build rule
-Idea → specification → builder prompt → local build → acceptance → deploy/test → commercial evidence → scale/iterate/kill. DAWN integration is optional after the product works independently.
+Agents can use configured tools directly. Tool access is controlled by local configuration and operating-system permissions, not DAWN policies.
+
+## Future connectivity
+Keep one generic `ExternalOrchestratorAdapter` / REST / webhook / MCP interface. DAWN can be attached to that later without changing Foundry core logic.
+
+No DAWN-specific adapter, schema, mission model, council, approval gate or evidence gate belongs in the core app generator.
