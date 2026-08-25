@@ -13,13 +13,13 @@ export class HermesAgentAdapter {
   }
 }
 
-export class DawnOptionalAdapter {
-  key = 'dawn_optional';
-  name = 'DAWN Optional Orchestration';
+export class ExternalOrchestratorAdapter {
+  key = 'external_orchestrator';
+  name = 'Generic External Orchestrator';
   optional = true;
 
   async dispatchJob(job: LocalExecutionJob) {
-    return { jobId: `dawn-${Date.now()}`, status: 'OPTIONAL_ADAPTER_NOT_REQUIRED', job };
+    return { jobId: `external-${Date.now()}`, status: 'OPTIONAL_PEER_READY', job };
   }
 }
 
@@ -45,5 +45,5 @@ export const DEFAULT_LOCAL_ENDPOINTS = {
 export const OPTIONAL_PEERS = {
   hermes: true,
   aoe: true,
-  dawn: true
+  externalOrchestrator: true
 } as const;
